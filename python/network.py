@@ -15,6 +15,7 @@ def new_csv(a):
         for teammate, score in teammates_scores.items():
             pokemon_scores[pokemon_name][teammate] = score
     pokemon_df = pd.DataFrame(pokemon_scores)
+    pokemon_df = (pokemon_df+pokemon_df.transpose())/2
     pokemon_df.fillna(0, inplace=True)
     pokemon_df.to_csv("../network/"+a)
 
@@ -23,5 +24,6 @@ def new_csv(a):
 if __name__ == "__main__":
     os.chdir("../datasets/raw_data")
     files = os.listdir(os.getcwd())
+    #print(files)
     for file in files:
         new_csv(file)
