@@ -1,60 +1,57 @@
-var MoveNamespace = {};
-
-MoveNamespace.init =(function () {
-  var margin = { top: 0, right: 20, bottom: 0, left: 50 },
+var margin = { top: 0, right: 20, bottom: 0, left: 50 },
   width =
     document.getElementById("types_chart").offsetWidth -
     margin.left -
     margin.right,
-  height = 330;
+  heightW = 220;
 var tooltip = d3.select("#tooltip");
-d3.csv("../datasets/waffle.csv", function (error, alldata) {
+d3.csv("../datasets/waffle.csv", function (error, alldataW) {
   if (error) throw error;
 
   var range = d3.select("#rangeInput");
   var output = document.getElementById("affDate");
-  var svg = d3
+  var svgW = d3
     .select("#types_chart")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom);
+    .attr("height", heightW + margin.top + margin.bottom);
 
   range.on("change", function () {
     var index = range.node().value;
-    output.innerHTML = Object.keys(alldata[0])[index];
+    output.innerHTML = Object.keys(alldataW[0])[index];
 
-    var data = alldata.map(function (d) {
+    var dataW = alldataW.map(function (d) {
       return {
         category: d[Object.keys(d)[0]],
         value: +d[Object.keys(d)[index]],
       };
     });
 
-    var totalValues = d3.sum(data, function (d) {
+    var totalValuesW = d3.sum(dataW, function (d) {
       return d.value;
     });
     var squareSize = 20;
     var squarePadding = 2;
     var totalSquares = 0;
 
-    svg.selectAll("rect").remove();
+    svgW.selectAll("rect").remove();
 
-    data.forEach(function (d) {
+    dataW.forEach(function (d) {
       var squaresForCategory = Math.round(
-        ((((d.value / totalValues) * width) / 22) * height) / 22,
+        ((((d.value / totalValuesW) * width) / 22) * heightW) / 22,
       );
       for (var i = 0; i < squaresForCategory; i++) {
-        svg
+        svgW
           .append("rect")
           .attr("x", function () {
             var col = Math.floor(
-              totalSquares / Math.floor(height / (squareSize + squarePadding)),
+              totalSquares / Math.floor(heightW / (squareSize + squarePadding)),
             );
             return col * (squareSize + squarePadding);
           })
           .attr("y", function () {
             var row =
-              totalSquares % Math.floor(height / (squareSize + squarePadding));
+              totalSquares % Math.floor(heightW / (squareSize + squarePadding));
             return row * (squareSize + squarePadding);
           })
           .attr("width", squareSize)
@@ -100,5 +97,3 @@ d3.csv("../datasets/waffle.csv", function (error, alldata) {
     });
   });
 });
-
-  })();

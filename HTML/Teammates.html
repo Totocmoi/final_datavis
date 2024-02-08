@@ -39,12 +39,18 @@
     <section>
       <div class="topnav">
         <a href="../index.html">Usage chart</a>
-        <a href="Side_charts.html">Detail charts</a>
+        <a href="Types.html">Percentage of types</a>
+        <a href="Stats.html">Distribution of stats</a>
+        <a href="Moves.html">Used moves</a>
         <a class="active" href="Teammates.html">Teammates network</a>
       </div>
       <h4>Network of teams in OverUsed in +1825 ladder</h4>
       <div class="behavePls">
-        <select id="teamDropdown"></select>
+        <div class="left">
+          <select id="teamDropdown"></select>
+          <button id="zoomIn">+</button>
+          <button id="zoomOut">-</button>
+        </div>
         <div id="network"></div>
       </div>
       <script src="../JavaScript/teammates.js"></script>

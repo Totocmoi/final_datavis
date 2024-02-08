@@ -40,20 +40,22 @@
       <div id="tooltip" style="opacity: 0; position: absolute; pointer-events: none; background-color: #fff; padding: 5px; border: 1px solid #000;"></div>
       <div class="topnav">
         <a href="../index.html">Usage chart</a>
-        <a class="active" href="Side_charts.html">Detail charts</a>
+        <a href="Types.html">Percentage of types</a>
+        <a class="active" href="Stats.html">Distribution of stats</a>
+        <a href="Moves.html">Used moves</a>
         <a href="Teammates.html">Teammates network</a>
       </div>
       <input type="range" id="rangeInput" min="1" max="119" step="1" list="tickmarks">
-      <div id = "affDate"></div>
-      <h4>Usage of types in OverUsed in +1825 ladder at the time</h4>
-      <div id="types_chart" class="chart"></div>
-      <script src="../JavaScript/types.js"></script>
-      <h4>Usage of stats in OverUsed in +1825 ladder at the time</h4>
-      <div id="stats_chart" class="chart"></div>
+      <h4>Usage of stats in OverUsed in +1825 ladder on the <div id = "affDate"></div></h4>
+      <div id="chart" class="chart">
+        <div id="hp"></div>
+        <div id="atk"></div>
+        <div id="def"></div>
+        <div id="satk"></div>
+        <div id="sdef"></div>
+        <div id="spe"></div>
+      </div>
       <script src="../JavaScript/stats.js"></script>
-      <h4>Usage of moves in OverUsed in +1825 ladder at the time</h4>
-      <div id="moves_chart" class="chart"></div>
-      <script src="../JavaScript/moves.js"></script>
     </section>
   </body>
 </html>

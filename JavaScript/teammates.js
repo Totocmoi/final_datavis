@@ -1,124 +1,130 @@
 var fileNames = [
-  "2014-11.csv",
-  "2014-12.csv",
-  "2015-01.csv",
-  "2015-02.csv",
-  "2015-03.csv",
-  "2015-04.csv",
-  "2015-05.csv",
-  "2015-06.csv",
-  "2015-07.csv",
-  "2015-08.csv",
-  "2015-09.csv",
-  "2015-10.csv",
-  "2015-11.csv",
-  "2015-12.csv",
-  "2016-01.csv",
-  "2016-02.csv",
-  "2016-03.csv",
-  "2016-04.csv",
-  "2016-05.csv",
-  "2016-06.csv",
-  "2016-07.csv",
-  "2016-08.csv",
-  "2016-09.csv",
-  "2016-10.csv",
-  "2016-11.csv",
-  "2016-12.csv",
-  "2017-01.csv",
-  "2017-02.csv",
-  "2017-03.csv",
-  "2017-04.csv",
-  "2017-05.csv",
-  "2017-06.csv",
-  "2017-07.csv",
-  "2017-08.csv",
-  "2017-09.csv",
-  "2017-10.csv",
-  "2017-11.csv",
-  "2017-12.csv",
-  "2018-01.csv",
-  "2018-02.csv",
-  "2018-03.csv",
-  "2018-04.csv",
-  "2018-05.csv",
-  "2018-06.csv",
-  "2018-07.csv",
-  "2018-08.csv",
-  "2018-09.csv",
-  "2018-10.csv",
-  "2018-11.csv",
-  "2018-12.csv",
-  "2019-01.csv",
-  "2019-02.csv",
-  "2019-03.csv",
-  "2019-04.csv",
-  "2019-05.csv",
-  "2019-06.csv",
-  "2019-07.csv",
-  "2019-08.csv",
-  "2019-09.csv",
-  "2019-10.csv",
-  "2019-11.csv",
-  "2019-12.csv",
-  "2020-01.csv",
-  "2020-02.csv",
-  "2020-03.csv",
-  "2020-04.csv",
-  "2020-05.csv",
-  "2020-06-DLC1.csv",
-  "2020-06.csv",
-  "2020-07.csv",
-  "2020-08.csv",
-  "2020-09.csv",
-  "2020-10-DLC2.csv",
-  "2020-10.csv",
-  "2020-11-H1.csv",
-  "2020-11-H2.csv",
-  "2020-11.csv",
-  "2020-12-H1.csv",
-  "2020-12-H2.csv",
-  "2020-12.csv",
-  "2021-01.csv",
-  "2021-02.csv",
-  "2021-03.csv",
-  "2021-04.csv",
-  "2021-05.csv",
-  "2021-06.csv",
-  "2021-07.csv",
-  "2021-08.csv",
-  "2021-09.csv",
-  "2021-10.csv",
-  "2021-11.csv",
-  "2021-12.csv",
-  "2022-01.csv",
-  "2022-02.csv",
-  "2022-03.csv",
-  "2022-04.csv",
-  "2022-05.csv",
-  "2022-06.csv",
-  "2022-07.csv",
-  "2022-08.csv",
-  "2022-09.csv",
-  "2022-10.csv",
-  "2022-11.csv",
-  "2022-12.csv",
-  "2023-01.csv",
-  "2023-02.csv",
-  "2023-03.csv",
-  "2023-04.csv",
-  "2023-05.csv",
-  "2023-06.csv",
-  "2023-07.csv",
-  "2023-08.csv",
-  "2023-09-DLC1.csv",
-  "2023-09.csv",
-  "2023-10.csv",
-  "2023-11.csv",
-  "2023-12-DLC2.csv",
-  "2023-12.csv",
-  "2024-01.csv",
+  "2014-11.json",
+  "2014-12.json",
+  "2015-01.json",
+  "2015-02.json",
+  "2015-03.json",
+  "2015-04.json",
+  "2015-05.json",
+  "2015-06.json",
+  "2015-07.json",
+  "2015-08.json",
+  "2015-09.json",
+  "2015-10.json",
+  "2015-11.json",
+  "2015-12.json",
+  "2016-01.json",
+  "2016-02.json",
+  "2016-03.json",
+  "2016-04.json",
+  "2016-05.json",
+  "2016-06.json",
+  "2016-07.json",
+  "2016-08.json",
+  "2016-09.json",
+  "2016-10.json",
+  "2016-11.json",
+  "2016-12.json",
+  "2017-01.json",
+  "2017-02.json",
+  "2017-03.json",
+  "2017-04.json",
+  "2017-05.json",
+  "2017-06.json",
+  "2017-07.json",
+  "2017-08.json",
+  "2017-09.json",
+  "2017-10.json",
+  "2017-11.json",
+  "2017-12.json",
+  "2018-01.json",
+  "2018-02.json",
+  "2018-03.json",
+  "2018-04.json",
+  "2018-05.json",
+  "2018-06.json",
+  "2018-07.json",
+  "2018-08.json",
+  "2018-09.json",
+  "2018-10.json",
+  "2018-11.json",
+  "2018-12.json",
+  "2019-01.json",
+  "2019-02.json",
+  "2019-03.json",
+  "2019-04.json",
+  "2019-05.json",
+  "2019-06.json",
+  "2019-07.json",
+  "2019-08.json",
+  "2019-09.json",
+  "2019-10.json",
+  "2019-11.json",
+  "2019-12.json",
+  "2020-01.json",
+  "2020-02.json",
+  "2020-03.json",
+  "2020-04.json",
+  "2020-05.json",
+  "2020-06-DLC1.json",
+  "2020-06.json",
+  "2020-07.json",
+  "2020-08.json",
+  "2020-09.json",
+  "2020-10-DLC2.json",
+  "2020-10.json",
+  "2020-11-H1.json",
+  "2020-11-H2.json",
+  "2020-11.json",
+  "2020-12-H1.json",
+  "2020-12-H2.json",
+  "2020-12.json",
+  "2021-01.json",
+  "2021-02.json",
+  "2021-03.json",
+  "2021-04.json",
+  "2021-05.json",
+  "2021-06.json",
+  "2021-07.json",
+  "2021-08.json",
+  "2021-09.json",
+  "2021-10.json",
+  "2021-11.json",
+  "2021-12.json",
+  "2022-01.json",
+  "2022-02.json",
+  "2022-03.json",
+  "2022-04.json",
+  "2022-05.json",
+  "2022-06.json",
+  "2022-07.json",
+  "2022-08.json",
+  "2022-09.json",
+  "2022-10.json",
+  "2022-11.json",
+  "2022-12.json",
+  "2023-01.json",
+  "2023-02.json",
+  "2023-03.json",
+  "2023-04.json",
+  "2023-05.json",
+  "2023-06.json",
+  "2023-07.json",
+  "2023-08.json",
+  "2023-09-DLC1.json",
+  "2023-09.json",
+  "2023-10.json",
+  "2023-11.json",
+  "2023-12-DLC2.json",
+  "2023-12.json",
+  "2024-01.json",
 ];
+
+var margin = { top: 20, right: 20, bottom: 40, left: 50 },
+  width =
+    document.getElementById("network").offsetWidth - margin.left - margin.right,
+  height = 500 - margin.top - margin.bottom;
+
 
 d3.select("#teamDropdown")
   .selectAll("option")
@@ -126,94 +132,95 @@ d3.select("#teamDropdown")
   .enter()
   .append("option")
   .text(function (d) {
-    return d.replace(".csv", "");
+    return d.replace(".json", "");
   });
 
 var teamDropdown = d3.select("#teamDropdown");
-
 teamDropdown.on("change", function () {
   var selectedFileName = this.value;
+  d3.json(
+    "../datasets/network/" + selectedFileName + ".json",
+    function (error, graph) {
+      if (error) throw error;
+      var nodes = [];
+      graph.nodes.forEach(function (node) {
+        nodes.push({ id: node });
+      });
+      var links = graph.links.map(function (link) {
+        return {
+          source: link.source,
+          target: link.target,
+          value: Math.pow(link.value, 3), 
+        };
+      });
+      d3.select("svg").remove();
+      var svg = d3.select("#network")
+      .append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var zoom = d3.zoom().scaleExtent([0.1, 10]).on("zoom", zoomed);
 
-  d3.csv("../datasets/network/" + selectedFileName, function (error, data) {
-    if (error) throw error;
-    var nodes = [];
-    var links = [];
+      svg.call(zoom);
 
-    data.forEach(function (d) {
-      if (d.id) {
-        nodes.push({ id: d.id });
-      } else {
-        console.warn("Données manquantes pour créer un noeud :", d);
+      function zoomed() {
+        svg.attr("transform", d3.event.transform);
       }
-    });
-
-    data.forEach(function (d, i) {
-      Object.keys(d).forEach(function (key) {
-        if (key !== "id") {
-          links.push({
-            source: i,
-            target: nodes.findIndex(function (node) {
-              return node.id === key;
-            }),
-            value: +d[key], 
-          });
-        }
-      });
-    });
-
-    var simulation = d3
-      .forceSimulation(nodes)
-      .force("charge", d3.forceManyBody().strength(-200))
-      .force("link", d3.forceLink(links).distance(100))
-      .force("center", d3.forceCenter(width / 2, height / 2));
-
-    var link = svg
-      .selectAll(".link")
-      .data(links)
-      .enter()
-      .append("line")
-      .attr("class", "link")
-      .style("stroke", "#999")
-      .style("stroke-opacity", 0.6)
-      .attr("stroke-width", function (d) {
-        return Math.sqrt(d.value);
+      var zoomInButton = document.getElementById("zoomIn");
+      var zoomOutButton = document.getElementById("zoomOut");
+      zoomInButton.addEventListener("click", function () {
+        zoom.scaleBy(svg, 1.2); 
       });
 
-    var node = svg
-      .selectAll(".node")
-      .data(nodes)
-      .enter()
-      .append("circle")
-      .attr("class", "node")
-      .attr("r", 10)
-      .style("fill", "#1f77b4");
+      zoomOutButton.addEventListener("click", function () {
+        zoom.scaleBy(svg, 0.8); 
+      });
+      var simulation = d3
+        .forceSimulation(nodes)
+        .force(
+          "link",
+          d3.forceLink(links).id((d) => d.id),
+        )
+        .force("charge", d3.forceManyBody().strength(-100))
+        .force("center", d3.forceCenter(width / 2, height / 2));
 
-    node.append("title").text(function (d) {
-      return d.id;
-    });
-
-    simulation.on("tick", function () {
-      link
-        .attr("x1", function (d) {
-          return d.source.x;
-        })
-        .attr("y1", function (d) {
-          return d.source.y;
-        })
-        .attr("x2", function (d) {
-          return d.target.x;
-        })
-        .attr("y2", function (d) {
-          return d.target.y;
+      var link = svg
+        .append("g")
+        .attr("class", "links")
+        .selectAll("line")
+        .data(links)
+        .enter()
+        .append("line")
+        .attr("stroke", "#999")
+        .attr("stroke-opacity", 0.8)
+        .attr("stroke-width", function (d) {
+          return Math.cbrt(d.value) / 500;
         });
 
-      node
-        .attr("cx", function (d) {
-          return d.x;
-        })
-        .attr("cy", function (d) {
-          return d.y;
-        });
-    });
-  });
+      var node = svg
+        .append("g")
+        .attr("class", "nodes")
+        .selectAll("circle")
+        .data(nodes)
+        .enter()
+        .append("circle")
+        .attr("r", 5)
+        .attr("fill", "blue")
+        .attr("stroke", "#fff")
+        .attr("stroke-width", 1.5);
+
+      node.append("title").text((d) => d.id);
+
+      simulation.on("tick", () => {
+        link
+          .attr("x1", (d) => d.source.x)
+          .attr("y1", (d) => d.source.y)
+          .attr("x2", (d) => d.target.x)
+          .attr("y2", (d) => d.target.y);
+
+        node.attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+      });
+    },
+  );
 });
