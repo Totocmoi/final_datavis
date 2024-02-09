@@ -1,4 +1,4 @@
-d3.csv("../datasets/main-chart.csv", function (error, data) {
+d3.csv("./datasets/main-chart.csv", function (error, data) {
   if (error) throw error;
 
   var margin = { top: 20, right: 20, bottom: 40, left: 50 },
@@ -92,7 +92,7 @@ d3.csv("../datasets/main-chart.csv", function (error, data) {
 
   var maxChecked = 10;
   var pokemonCategories = {};
-  d3.csv("../datasets/pokemon.csv", function (error, pokemonData) {
+  d3.csv("./datasets/pokemon.csv", function (error, pokemonData) {
     if (error) throw error;
 
     pokemonCategories["g1"] = [];
