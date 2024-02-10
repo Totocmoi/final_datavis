@@ -1,148 +1,203 @@
+var fileNames = [
+  "2014-11.csv",
+  "2014-12.csv",
+  "2015-01.csv",
+  "2015-02.csv",
+  "2015-03.csv",
+  "2015-04.csv",
+  "2015-05.csv",
+  "2015-06.csv",
+  "2015-07.csv",
+  "2015-08.csv",
+  "2015-09.csv",
+  "2015-10.csv",
+  "2015-11.csv",
+  "2015-12.csv",
+  "2016-01.csv",
+  "2016-02.csv",
+  "2016-03.csv",
+  "2016-04.csv",
+  "2016-05.csv",
+  "2016-06.csv",
+  "2016-07.csv",
+  "2016-08.csv",
+  "2016-09.csv",
+  "2016-10.csv",
+  "2016-11.csv",
+  "2016-12.csv",
+  "2017-01.csv",
+  "2017-02.csv",
+  "2017-03.csv",
+  "2017-04.csv",
+  "2017-05.csv",
+  "2017-06.csv",
+  "2017-07.csv",
+  "2017-08.csv",
+  "2017-09.csv",
+  "2017-10.csv",
+  "2017-11.csv",
+  "2017-12.csv",
+  "2018-01.csv",
+  "2018-02.csv",
+  "2018-03.csv",
+  "2018-04.csv",
+  "2018-05.csv",
+  "2018-06.csv",
+  "2018-07.csv",
+  "2018-08.csv",
+  "2018-09.csv",
+  "2018-10.csv",
+  "2018-11.csv",
+  "2018-12.csv",
+  "2019-01.csv",
+  "2019-02.csv",
+  "2019-03.csv",
+  "2019-04.csv",
+  "2019-05.csv",
+  "2019-06.csv",
+  "2019-07.csv",
+  "2019-08.csv",
+  "2019-09.csv",
+  "2019-10.csv",
+  "2019-11.csv",
+  "2019-12.csv",
+  "2020-01.csv",
+  "2020-02.csv",
+  "2020-03.csv",
+  "2020-04.csv",
+  "2020-05.csv",
+  "2020-06-DLC1.csv",
+  "2020-06.csv",
+  "2020-07.csv",
+  "2020-08.csv",
+  "2020-09.csv",
+  "2020-10-DLC2.csv",
+  "2020-10.csv",
+  "2020-11-H1.csv",
+  "2020-11-H2.csv",
+  "2020-11.csv",
+  "2020-12-H1.csv",
+  "2020-12-H2.csv",
+  "2020-12.csv",
+  "2021-01.csv",
+  "2021-02.csv",
+  "2021-03.csv",
+  "2021-04.csv",
+  "2021-05.csv",
+  "2021-06.csv",
+  "2021-07.csv",
+  "2021-08.csv",
+  "2021-09.csv",
+  "2021-10.csv",
+  "2021-11.csv",
+  "2021-12.csv",
+  "2022-01.csv",
+  "2022-02.csv",
+  "2022-03.csv",
+  "2022-04.csv",
+  "2022-05.csv",
+  "2022-06.csv",
+  "2022-07.csv",
+  "2022-08.csv",
+  "2022-09.csv",
+  "2022-10.csv",
+  "2022-11.csv",
+  "2022-12.csv",
+  "2023-01.csv",
+  "2023-02.csv",
+  "2023-03.csv",
+  "2023-04.csv",
+  "2023-05.csv",
+  "2023-06.csv",
+  "2023-07.csv",
+  "2023-08.csv",
+  "2023-09-DLC1.csv",
+  "2023-09.csv",
+  "2023-10.csv",
+  "2023-11.csv",
+  "2023-12-DLC2.csv",
+  "2023-12.csv",
+  "2024-01.csv",
+];
+
 var range = d3.select("#rangeInput");
 var output = document.getElementById("affDate");
 var width = document.getElementById("chart").offsetWidth;
 var height = 300;
+var margin = { top: 20, right: 30, bottom: 30, left: 40 };
+var svg = d3
+  .select("#chart")
+  .append("svg")
+  .attr("width", width)
+  .attr("height", height)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// Charger les données pour chaque statistique
-d3.csv("../datasets/violin/hp.csv", function (error, allhpdata) {
-  if (error) throw error;
-  d3.csv("../datasets/violin/atk.csv", function (error, allatkdata) {
+range.on("change", function () {
+  svg.selectAll("*").remove();
+
+  var index = +range.node().value;
+  output.textContent = fileNames[index];
+
+  d3.csv("../datasets/violin/" + fileNames[index], function (error, data) {
     if (error) throw error;
-    d3.csv("../datasets/violin/def.csv", function (error, alldefdata) {
-      if (error) throw error;
-      d3.csv("../datasets/violin/satk.csv", function (error, allsatkdata) {
-        if (error) throw error;
-        d3.csv("../datasets/violin/sdef.csv", function (error, allsdefdata) {
-          if (error) throw error;
-          d3.csv("../datasets/violin/spe.csv", function (error, allspedata) {
-            if (error) throw error;
-            range.on("change", function () {
-              d3.select("#chart").selectAll("svg").remove();
+    var innerWidth = width - margin.left - margin.right;
+    var innerHeight = height - margin.top - margin.bottom;
 
-              var index = range.node().value;
-              output.innerHTML = index;
+    var index = +range.node().value;
+    output.textContent = fileNames[index];
 
-              output.innerHTML = Object.keys(allhpdata[0])[index];
-              
-              var hpdata = formatData(allhpdata, index);
-              var atkdata = formatData(allatkdata, index);
-              var defdata = formatData(alldefdata, index);
-              var satkdata = formatData(allsatkdata, index);
-              var sdefdata = formatData(allsdefdata, index);
-              var spedata = formatData(allspedata, index);
+    var attributes = [
+      "hp",
+      "attack",
+      "defense",
+      "special-attack",
+      "special-defense",
+      "speed",
+    ];
 
-              createViolinChart(hpdata, "hp");
-              createViolinChart(atkdata, "atk");
-              createViolinChart(defdata, "def");
-              createViolinChart(satkdata, "satk");
-              createViolinChart(sdefdata, "sdef");
-              createViolinChart(spedata, "spe");
-            });
-          });
-        });
-      });
+    var xScale = d3
+      .scaleBand()
+      .domain(attributes)
+      .range([0, innerWidth])
+      .padding(0.1);
+
+    var yScale = d3.scaleLinear().range([innerHeight, 0]).domain([0, 255]);
+
+    var innerScale = d3
+      .scaleLinear()
+      .range([0, xScale.bandwidth()])
+      .domain([0, 120]);
+
+    attributes.forEach(function (attribute, index) {
+      svg
+        .selectAll(".bar" + index)
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("class", "bar" + index)
+        .attr("x", function (d) {
+          console.log(xScale(attribute))
+          return xScale(attribute) +xScale.bandwidth()/2- innerScale(d[attribute]);
+        })
+        .attr("y", function (d) {
+          return yScale(d[""]);
+        })
+        .attr("width", function (d) {
+          return 2 * innerScale(d[attribute]);
+        })
+        .attr("height", 1)
+        .attr("fill", "steelblue");
     });
+
+    svg
+      .append("g")
+      .attr(
+        "transform",
+        "translate(0," + (innerHeight) + ")",
+      )
+      .call(d3.axisBottom(xScale));
+
+    svg.append("g").call(d3.axisLeft(yScale));
   });
 });
-
-function formatData(data, index) {
-  return data.map(function (d) {
-    return {
-      stat: +d[Object.keys(d)[0]],
-      percentage: +d[Object.keys(d)[index]],
-    };
-  });
-}
-
-function createViolinChart(data, chartId) {
-  console.log(data)
-  var svg = d3
-    .select("#"+chartId)
-    .append("svg")
-    .attr("width", width)
-    .attr("height", height)
-    .append("g")
-    .attr("transform", "translate(" + 0 + "," + 0 + ")");
-
-  var y = d3
-    .scaleLinear()
-    .domain([5, 255]) 
-    .range([height, 0]);
-  svg.append("g").call(d3.axisLeft(y));
-
-  var x = d3
-    .scaleBand()
-    .range([0, width])
-    .domain(["hp", "atk", "def","satk", "sdef", "spe"]) 
-    .padding(0.05);
-  svg
-    .append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
-
-  var histogram = d3
-    .histogram()
-    .domain(y.domain())
-    .thresholds(y.ticks(20))
-    .value((d) => d.percentage);
-
-  var sumstat = d3
-    .nest()
-    .key(function (d) {
-      return d.stat;
-    })
-    .rollup(function (d) {
-      input = d.map(function (g) {
-        return g.percentage;
-      });
-      bins = histogram(input);
-      return bins;
-    })
-    .entries(data);
-
-  var maxNum = 0;
-  for (i in sumstat) {
-    allBins = sumstat[i].value;
-    lengths = allBins.map(function (a) {
-      return a.length;
-    });
-    longuest = d3.max(lengths);
-    if (longuest > maxNum) {
-      maxNum = longuest;
-    }
-  }
-  var xNum = d3
-    .scaleLinear()
-    .range([0, x.bandwidth()])
-    .domain([-maxNum, maxNum]);
-
-  svg
-    .selectAll("myViolin")
-    .data(sumstat)
-    .enter()
-    .append("g")
-    .attr("transform", function (d) {
-      return "translate(" + d.key + " ,0)";
-    })
-    .append("path")
-    .datum(function (d) {
-      return d.value;
-    })
-    .style("stroke", "none")
-    .style("fill", "#69b3a2")
-    .attr(
-      "d",
-      d3
-        .area()
-        .x0(function (d) {
-          return xNum(-d.length);
-        })
-        .x1(function (d) {
-          return xNum(d.length);
-        })
-        .y(function (d) {
-          return y(d.x0);
-        })
-        .curve(d3.curveCatmullRom),
-    );
-}
