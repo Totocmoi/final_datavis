@@ -167,18 +167,20 @@ teamDropdown.on("change", function () {
       
       var offsetX = margin.left;
       var offsetY = margin.top;
+      var scale = 1
 
       function dragged() {
         offsetX += d3.event.dx;
         offsetY += d3.event.dy;
-        d3.select(this).attr("transform", "translate(" + offsetX + "," + offsetY + ")");
+        d3.select(this).attr("transform", "translate(" + offsetX + "," + offsetY + ") scale(" + scale + ")");
       }
       var zoom = d3.zoom().scaleExtent([0.1, 10]).on("zoom", zoomed);
 
       svg.call(zoom);
 
       function zoomed() {
-        svg.attr("transform", d3.event.transform);
+        scale =d3.event.transform.k
+        d3.select(this).attr("transform", "translate(" + offsetX + "," + offsetY + ") scale(" + scale + ")");
       }
       var zoomInButton = document.getElementById("zoomIn");
       var zoomOutButton = document.getElementById("zoomOut");
