@@ -125,7 +125,6 @@ var margin = { top: 20, right: 20, bottom: 40, left: 50 },
     document.getElementById("network").offsetWidth - margin.left - margin.right,
   height = 500 - margin.top - margin.bottom;
 
-
 d3.select("#teamDropdown")
   .selectAll("option")
   .data(fileNames)
@@ -150,16 +149,30 @@ teamDropdown.on("change", function () {
         return {
           source: link.source,
           target: link.target,
-          value: Math.pow(link.value, 3), 
+          value: Math.pow(link.value, 3),
         };
       });
       d3.select("svg").remove();
-      var svg = d3.select("#network")
-      .append("svg")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.top + margin.bottom)
-      .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var svg = d3
+        .select("#network")
+        .append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      
+      var drag = d3.drag().on("drag", dragged);
+
+      svg.call(drag);
+      
+      var offsetX = margin.left;
+      var offsetY = margin.top;
+
+      function dragged() {
+        offsetX += d3.event.dx;
+        offsetY += d3.event.dy;
+        d3.select(this).attr("transform", "translate(" + offsetX + "," + offsetY + ")");
+      }
       var zoom = d3.zoom().scaleExtent([0.1, 10]).on("zoom", zoomed);
 
       svg.call(zoom);
@@ -170,11 +183,11 @@ teamDropdown.on("change", function () {
       var zoomInButton = document.getElementById("zoomIn");
       var zoomOutButton = document.getElementById("zoomOut");
       zoomInButton.addEventListener("click", function () {
-        zoom.scaleBy(svg, 1.2); 
+        zoom.scaleBy(svg, 1.2);
       });
 
       zoomOutButton.addEventListener("click", function () {
-        zoom.scaleBy(svg, 0.8); 
+        zoom.scaleBy(svg, 0.8);
       });
       var simulation = d3
         .forceSimulation(nodes)
