@@ -137,7 +137,7 @@ range.on("change", function () {
   svg.selectAll("*").remove();
 
   var index = +range.node().value;
-  output.textContent = fileNames[index].replace(".json", "");
+  output.textContent = fileNames[index].replace(".csv", "");
 
   d3.csv("../datasets/violin/" + fileNames[index], function (error, data) {
     if (error) throw error;
