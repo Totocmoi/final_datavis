@@ -145,7 +145,6 @@ range.on("change", function () {
     var innerHeight = height - margin.top - margin.bottom;
 
     var index = +range.node().value;
-    output.textContent = fileNames[index];
 
     var attributes = [
       "hp",
